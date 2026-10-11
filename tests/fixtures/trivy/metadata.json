@@ -1,0 +1,27 @@
+{
+  "scanner_version": "Version: 0.75.0\nCheck Bundle:\n  Digest: sha256:1583562f8b90ed2a071b99f0e5ffff6b57e4ceb6ca3e4796577b4e6a339eb74c\n  DownloadedAt: 2026-10-11 19:28:37.474001552 +0000 UTC",
+  "scan_options": [
+    "--misconfig-scanners",
+    "terraform",
+    "--format",
+    "json",
+    "--exit-code",
+    "0"
+  ],
+  "fixtures": [
+    {
+      "name": "unsafe",
+      "fixture": "unsafe.json",
+      "report_sha256": "c2bfdc86d10351a81b5cedea18cf2795db049b40eef97bb07154a71e79d1a152",
+      "source_file": "examples/terraform/unsafe/main.tf",
+      "source_sha256": "c6143dbee0d9028eddc4788f800e6d76d384ebc3d398101ea6ccca0a625e77a0"
+    },
+    {
+      "name": "restricted",
+      "fixture": "restricted.json",
+      "report_sha256": "6514c2affc0fc512120b8b45cb19d19504d9f2b245112735699b840fec407867",
+      "source_file": "examples/terraform/restricted/main.tf",
+      "source_sha256": "9a4a641ab7e4709112823fbfc790d031eba91b8ef63f7e2162c050402521cde9"
+    }
+  ]
+}

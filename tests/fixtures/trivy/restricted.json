@@ -1,0 +1,21 @@
+{
+  "SchemaVersion": 2,
+  "Trivy": {
+    "Version": "0.75.0"
+  },
+  "ReportID": "01a12c71-aea5-7903-a82f-98dbb38bb719",
+  "CreatedAt": "2026-10-11T20:30:10.213593455+01:00",
+  "ArtifactName": "examples/terraform/restricted",
+  "ArtifactType": "filesystem",
+  "Results": [
+    {
+      "Target": ".",
+      "Class": "config",
+      "Type": "terraform",
+      "MisconfSummary": {
+        "Successes": 71,
+        "Failures": 0
+      }
+    }
+  ]
+}
