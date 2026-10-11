@@ -7,6 +7,7 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 
 from iac_security_gate.configuration import load_exceptions, load_policy
+from iac_security_gate.exporting import write_new_report
 from iac_security_gate.reporting import build_assessment
 from iac_security_gate.scan_context import load_scan_report
 
@@ -39,6 +40,7 @@ def main(argv: list[str] | None = None) -> int:
         type=_iso_date,
         help="Replay at YYYY-MM-DD; defaults to the current UTC date.",
     )
+    parser.add_argument("--output", type=Path, help="Create a new JSON report.")
     args = parser.parse_args(argv)
 
     evaluation_date = args.evaluation_date or datetime.now(timezone.utc).date()
@@ -62,7 +64,17 @@ def main(argv: list[str] | None = None) -> int:
     report["configuration"]["evaluation_date_source"] = (
         "explicit_replay" if args.evaluation_date else "utc_clock"
     )
-    print(json.dumps(report, indent=2, ensure_ascii=False, allow_nan=False))
+    content = json.dumps(report, indent=2, ensure_ascii=False, allow_nan=False) + "\n"
+
+    try:
+        if args.output is None:
+            sys.stdout.write(content)
+        else:
+            write_new_report(args.output, content)
+            print("Report saved.", file=sys.stderr)
+    except OSError:
+        print("Report output failed; no successful gate result.", file=sys.stderr)
+        return 2
     return 0 if report["gate"] == "pass" else 1
 
 

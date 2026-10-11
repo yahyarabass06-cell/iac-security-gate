@@ -73,3 +73,27 @@ def test_invalid_date_is_usage_error():
     assert result.returncode == 2
     assert result.stdout == ""
     assert "YYYY-MM-DD" in result.stderr
+
+
+def test_blocked_report_can_be_exported(tmp_path):
+    path = tmp_path / "assessment.json"
+    result = run_cli(extra=("--allow-root-change", "--output", str(path)))
+    assert result.returncode == 1
+    assert result.stdout == ""
+    assert json.loads(path.read_text())["gate"] == "block"
+
+
+def test_export_collision_returns_analysis_error(tmp_path):
+    path = tmp_path / "assessment.json"
+    path.write_text("original")
+    result = run_cli(extra=("--allow-root-change", "--output", str(path)))
+    assert result.returncode == 2
+    assert result.stdout == ""
+    assert path.read_text() == "original"
+
+
+def test_missing_output_directory_returns_error(tmp_path):
+    path = tmp_path / "missing" / "assessment.json"
+    result = run_cli(extra=("--allow-root-change", "--output", str(path)))
+    assert result.returncode == 2
+    assert not path.exists()
