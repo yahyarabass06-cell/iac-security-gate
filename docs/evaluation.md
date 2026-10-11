@@ -54,7 +54,9 @@ Dependency checks, Ruff, all 196 tests, the installed CLI and an exported
 blocking assessment succeeded.
 
 GitHub Actions is configured for Python 3.12 and 3.14.
-Remote outcomes must be verified after publication.
+Both Python jobs passed for commit `80d1644`.
+
+Verified run: [CI results](https://github.com/yahyarabass06-cell/iac-security-gate/actions/runs/38169942779).
 
 ## Future Measurements
 

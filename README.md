@@ -170,7 +170,9 @@ A clean Git clone, fresh Python 3.14 environment, non-editable installation
 and exported blocking assessment were also verified.
 
 CI is configured for Python 3.12 and 3.14.
-Remote results are pending until the workflow executes on GitHub.
+GitHub Actions passed on Python 3.12 and 3.14 for commit `80d1644`.
+
+Verified run: [CI results](https://github.com/yahyarabass06-cell/iac-security-gate/actions/runs/38169942779).
 
 Tests use captured synthetic reports and do not require Trivy downloads.
 They validate application behavior, not real-world scanner detection accuracy.
