@@ -214,3 +214,8 @@ data handling, replay dates and filesystem boundaries.
 ## License
 
 Distributed under the [MIT License](LICENSE).
+
+## Evaluation Details
+
+See [Evaluation](docs/evaluation.md) for observed scanner results,
+tested decision scenarios, reproducibility and future measurement methods.
